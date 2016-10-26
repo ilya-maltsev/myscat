@@ -8,7 +8,7 @@ yum install pcre-devel
 2) сам парсер собирать командой:
 gcc -Wall -o /develop/myscat4 /develop/myscat.c -lpcre
 
-
+----
 Инструкция по использованию
 
 1) создаем pipe:
