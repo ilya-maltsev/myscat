@@ -16,6 +16,7 @@ script
 /usr/bin/stdbuf -oL /usr/local/bin/myscat /var/log/mysql/pipe-log >> /var/log/mysql/mysql_parsed_log.log
 
 end script
+
 3) запускаем службу:
 initctl start myscat
 
