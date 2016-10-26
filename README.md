@@ -1,5 +1,6 @@
 # myscat
 MySQL general-log parser
+
 Инструкция по использованию
 1) создаем pipe:
 mkfifo /var/log/mysql/pipe-log
