@@ -6,7 +6,8 @@
 
 Пример
 следующие строки 
-```160912 10:02:23   167 Connect   service-user@app1.domain.test on logs_1
+```sh
+160912 10:02:23   167 Connect   service-user@app1.domain.test on logs_1
           167 Connect   service-user@app1.domain.test on logs_archive_by_day
           167 Query SET NAMES cp1251
           167 Query SET NAMES 'UTF8'
