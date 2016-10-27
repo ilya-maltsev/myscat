@@ -4,13 +4,7 @@ static char copyright[] =
 	Ilya Maltsev.e-mail:i.y.maltsev@yandex.ru.  All rights reserved.\n";
 #endif /* not lint */
 
-#ifndef lint
-#if 0
-static char sccsid[] = "@(#)myscat.c	1.0";
-#else
 
-#endif
-#endif /* not lint */
 
 #include <sys/param.h>
 #include <sys/stat.h>
@@ -69,7 +63,7 @@ main(int argc, char *argv[])
 			//vflag = 1;
 			//break;
 			(void)fprintf(stderr,
-			    "Mysql general-log parser by Ilya Maltsev.e-mail:opel_box@mail.ru.\n");
+			    "Mysql general-log parser by Ilya Maltsev.e-mail:i.y.maltsev@yandex.ru.\n");
 			exit(1);
 		default:
 			(void)fprintf(stderr,
@@ -514,9 +508,6 @@ raw_cat(int rfd)
                                     break;
                                 }
                             }
-
-
-
                             memset(Group1,'\0',strlen(Group1));
                             memset(sourceCopy,'\0',strlen(sourceCopy));
 
@@ -524,24 +515,18 @@ raw_cat(int rfd)
 
 						} 
 					}
-
 					memset(line,'\0',strlen(line));
 
 					j=-1;
 				}
 			}
-			
+	
 			nw = nr;
 			memset(buf,'\0',strlen(buf));
-
-
 		}
-		
 		if (nr < 0) {
 			warn("%s", filename);
 			rval = 1;
 		}
 	}
 }
-
-
