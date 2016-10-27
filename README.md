@@ -59,6 +59,7 @@ gcc -Wall -o /develop/myscat4 /develop/myscat.c -lpcre
 mkfifo /var/log/mysql/pipe-log
 
 2) создаем init-скрипт:
+```sh
 vim /etc/init/myscat.conf
 
 start on runlevel [2345]
@@ -69,6 +70,7 @@ script
 /usr/bin/stdbuf -oL /develop/myscat4 /var/log/mysql/pipe-log >> /var/log/mysql/mysql_parsed_log.log
 
 end script
+```
 
 3) запускаем службу:
 initctl start myscat
