@@ -22,7 +22,7 @@ start on runlevel [2345]
 respawn
 script
 
-/usr/bin/stdbuf -oL /usr/local/bin/myscat /var/log/mysql/pipe-log >> /var/log/mysql/mysql_parsed_log.log
+/usr/bin/stdbuf -oL /develop/myscat4 /var/log/mysql/pipe-log >> /var/log/mysql/mysql_parsed_log.log
 
 end script
 
