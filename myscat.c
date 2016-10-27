@@ -1,6 +1,6 @@
 #ifndef lint
 static char copyright[] =
-"@(#) Copyright (c) 2014\n\
+"@(#) Copyright (c) 2016\n\
 	Ilya Maltsev.e-mail:i.y.maltsev@yandex.ru.  All rights reserved.\n";
 #endif /* not lint */
 
