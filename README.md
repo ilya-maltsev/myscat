@@ -3,6 +3,45 @@
 ## Описание
 Данная программа предназначена для фильтрации general-log'а СУБД MySQL с целью получения информации о вносимых изменения в структуру и состав таблиц БД. Недостатком исходного формата general-log'а является наличие мультистрочности запросов и отсутсвие информации о пользователе, от чьего имени был выполнен запрос (указывается только id его сессии).
 
+
+
+
+## Инструкция по комплиляции в Centos 6:
+
+1) в ОС нужно установить Perl-libs:
+sudo yum install pcre-devel -y
+
+2) сам парсер собирать командой:
+gcc -Wall -o /develop/myscat4 /develop/myscat.c -lpcre
+
+
+## Инструкция по использованию
+
+1) создаем pipe:
+mkfifo /var/log/mysql/pipe-log
+
+2) создаем init-скрипт:
+
+vim /etc/init/myscat.conf
+
+```sh
+
+start on runlevel [2345]
+
+respawn
+script
+
+/usr/bin/stdbuf -oL /develop/myscat4 /var/log/mysql/pipe-log >> /var/log/mysql/mysql_parsed_log.log
+
+end script
+```
+
+3) запускаем службу:
+initctl start myscat
+
+## Пояснение:
+все, что будет отправлено демоном mysqld в /var/log/mysql/pipe-log будет проанализировано парсером, а результат попадет в файл /var/log/mysql/mysql_parsed_log.log
+
 ## Пример
 следующие строки 
 ```sh
@@ -41,40 +80,3 @@
 
 
 которую в дальнейшем будет легко распарсить и сохранить в БД
-
-
-## Инструкция по комплиляции в Centos 6:
-
-1) в ОС нужно установить Perl-libs:
-sudo yum install pcre-devel -y
-
-2) сам парсер собирать командой:
-gcc -Wall -o /develop/myscat4 /develop/myscat.c -lpcre
-
-
-## Инструкция по использованию
-
-1) создаем pipe:
-mkfifo /var/log/mysql/pipe-log
-
-2) создаем init-скрипт:
-
-vim /etc/init/myscat.conf
-
-```sh
-
-start on runlevel [2345]
-
-respawn
-script
-
-/usr/bin/stdbuf -oL /develop/myscat4 /var/log/mysql/pipe-log >> /var/log/mysql/mysql_parsed_log.log
-
-end script
-```
-
-3) запускаем службу:
-initctl start myscat
-
-## Пояснение:
-все, что будет отправлено демоном mysqld в /var/log/mysql/pipe-log будет проанализировано парсером, а результат попадет в файл /var/log/mysql/mysql_parsed_log.log
