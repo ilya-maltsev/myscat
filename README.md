@@ -59,8 +59,10 @@ gcc -Wall -o /develop/myscat4 /develop/myscat.c -lpcre
 mkfifo /var/log/mysql/pipe-log
 
 2) создаем init-скрипт:
-```sh
+
 vim /etc/init/myscat.conf
+
+```sh
 
 start on runlevel [2345]
 
