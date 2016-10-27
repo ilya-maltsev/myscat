@@ -1,9 +1,9 @@
 # myscat - MySQL general-log parser
 
-Инструкция по комплиляции:
+Инструкция по комплиляции в Centos 6:
 
 1) в ОС нужно установить Perl-libs:
-yum install pcre-devel
+sudo yum install pcre-devel -y
 
 2) сам парсер собирать командой:
 gcc -Wall -o /develop/myscat4 /develop/myscat.c -lpcre
